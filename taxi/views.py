@@ -34,7 +34,9 @@ class DriverLicenseUpdateView(generic.UpdateView):
     template_name = "taxi/driver_license_update.html"
 
     def get_success_url(self):
-        return reverse_lazy("taxi:driver-detail", kwargs={"pk": self.object.pk})
+        return reverse_lazy(
+            "taxi:driver-detail", kwargs={"pk": self.object.pk}
+        )
 
 
 class CarListView(generic.ListView):
@@ -94,5 +96,6 @@ def toggle_car_driver(request, pk):
         car.drivers.remove(request.user)
     else:
         car.drivers.add(request.user)
-    return HttpResponseRedirect(reverse_lazy("taxi:car-detail", kwargs={"pk": pk}))
-
+    return HttpResponseRedirect(
+        reverse_lazy("taxi:car-detail", kwargs={"pk": pk})
+    )
