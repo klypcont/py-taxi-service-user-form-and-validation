@@ -83,7 +83,6 @@ from django import forms
 from taxi.models import Driver
 
 
-class DriverCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Driver
         fields = UserCreationForm.Meta.fields + (
@@ -110,7 +109,6 @@ class DriverCreationForm(UserCreationForm):
         return license_number
 
 
-class DriverLicenseUpdateForm(forms.ModelForm):
     class Meta:
         model = Driver
         fields = ("license_number",)
